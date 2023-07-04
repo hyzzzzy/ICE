@@ -2,7 +2,7 @@
 
 ## 💜 데모사이트
 
-![image](/uploads/22c167075cc97d3baa7d5e1014f76722/image.png)
+![image](https://github.com/hyzzzzy/ICE/assets/71072214/8d63f6e3-41ce-4e6c-a206-8e9b001e1d22)
 
 💡 http://kdt-sw-4-team07.elicecoding.com/
 
@@ -94,7 +94,7 @@
 
 ## 💜 기술스택
 
-![image](/uploads/08cbf3ec37a90f1bd57c1dd5311c9d8e/image.png)
+![image](https://github.com/hyzzzzy/ICE/assets/71072214/1f61cb75-3a43-4353-8793-081756a47ded)
 
 ## 💜 API 문서
 
