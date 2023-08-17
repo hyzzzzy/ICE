@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import ROUTES from './constants/Routes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProjectListMain from './pages/ProjectList';
+import ProjectList from './pages/ProjectList/index.ver.01';
 import Header from './components/Header/Header';
 import Error from './components/common/Error';
 import ChatBot from './components/ChatBot';
@@ -56,6 +57,7 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Main />} />
           <Route path={ROUTES.PROJECT_LIST} element={<ProjectListMain />} />
+          <Route path="project-list" element={<ProjectList />} />
           <Route path={`${ROUTES.CREATE}:type`} element={<ProjectWriting />} />
           <Route path={`${ROUTES.PROJECT}:id`} element={<Project />} />
           <Route path={ROUTES.LOGIN} element={<Login />} />

@@ -109,3 +109,10 @@ export type TypeProjectPost = Pick<
 export type TypeUserProjectPosts = TypeProjectList[];
 
 export type TypeCompleteProjects = Pick<Project, 'project_id' | 'project_title'>;
+
+export type TypeProjectFilter = {
+  category: string;
+  recruitment: string;
+  searchValue: string;
+  isSearched?: boolean;
+};

@@ -20,28 +20,6 @@ function ProjectListMain() {
 
   const [showSearchComponent, setShowSearchComponent] = useState(true);
 
-  // 검색 스크롤
-  // const scrollTimerRef = useRef<any>(null);
-
-  // // 스크롤을 내리면 상태 false
-  // // 스크롤을 멈추면 상태 true
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setShowSearchComponent(false);
-  //     clearTimeout(scrollTimerRef.current);
-  //     scrollTimerRef.current = setTimeout(() => {
-  //       setShowSearchComponent(true);
-  //     }, 500);
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
-
   const getProjectListData = useCallback(
     async (nextPage: number): Promise<void> => {
       const { projectList, selectedCategory, keywordValue, recruitingFilter } = projectListState;
@@ -74,9 +52,6 @@ function ProjectListMain() {
           }));
         }
       }
-      // finally {
-      //   setIsLoading(false);
-      // }
     },
     [
       projectListState.selectedCategory,
@@ -114,9 +89,6 @@ function ProjectListMain() {
       }));
       getProjectListData(1);
     }
-    // return () => {
-    //   resetProjectListAtom();
-    // };
   }, []);
 
   useEffect(() => {
