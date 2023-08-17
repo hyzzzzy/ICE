@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import useProjectList from '../../hooks/useProjectList';
 import { useMediaQuery } from 'react-responsive';
 import styles from './ProjectListMain.module.scss';
@@ -6,8 +6,10 @@ import Category from '../../components/ProjectList/Category';
 import ProjectPostButton from '../../components/common/ProjectPostButton';
 import ProjectSearch from '../../components/ProjectList/ProjectSearch';
 import RecruitingProjectFilter from '../../components/ProjectList/RecruitingProjectFilter';
+import ProjectList from '../../components/ProjectList/ProjectList';
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 
-function ProjectList() {
+function ProjectListPage() {
   const isMobile = useMediaQuery({ query: '(max-width:768px)' });
 
   const {
@@ -16,10 +18,14 @@ function ProjectList() {
     handleChangeCategory,
     handleChangeSearchValue,
     handleChangeRecruitingState,
+    handleIncreasePageCount,
   } = useProjectList();
   useEffect(() => {
     console.log(projectList);
   }, [projectList]);
+
+  const getNextPageRef: RefObject<HTMLElement | HTMLLIElement> =
+    useInfiniteScroll(handleIncreasePageCount);
 
   return (
     <>
@@ -44,12 +50,12 @@ function ProjectList() {
               onChange={handleChangeRecruitingState}
             />
           </div>
-          {/* <ProjectList
-            projectList={projectListState.projectList}
-            isLoading={projectListState.isLoading}
-            moreData={projectListState.moreData}
-            innerRef={target}
-          /> */}
+          <ProjectList
+            projectList={projectList}
+            isLoading={false}
+            moreData={true}
+            innerRef={getNextPageRef}
+          />
         </div>
         {isMobile && <ProjectPostButton />}
       </div>
@@ -57,4 +63,4 @@ function ProjectList() {
   );
 }
 
-export default ProjectList;
+export default ProjectListPage;

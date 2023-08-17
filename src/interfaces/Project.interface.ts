@@ -114,5 +114,6 @@ export type TypeProjectFilter = {
   category: string;
   recruitment: string;
   searchValue: string;
+  pageCount: number;
   isSearched?: boolean;
 };

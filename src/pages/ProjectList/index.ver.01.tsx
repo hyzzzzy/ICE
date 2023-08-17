@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
 import { ProjectFilterProvider } from '../../contexts/ProjectFilterContext';
-import ProjectList from './ProjectList';
+import ProjectListPage from './ProjectList';
 
 function ProjectListIndex() {
   return (
     <>
       <ProjectFilterProvider>
-        <ProjectList />
+        <ProjectListPage />
       </ProjectFilterProvider>
     </>
   );

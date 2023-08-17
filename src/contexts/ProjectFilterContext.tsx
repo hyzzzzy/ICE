@@ -4,13 +4,19 @@ import React, { Dispatch, ReactNode, createContext, useContext, useReducer } fro
 type ProjectFilterAction =
   | { type: 'CHANGE_CATEGORY'; payload: string }
   | { type: 'CHANGE_RECRUITING_STATE'; payload: string }
-  | { type: 'CHANGE_SEARCH_VALUE'; payload: string };
+  | { type: 'CHANGE_SEARCH_VALUE'; payload: string }
+  | { type: 'INCREASE_PAGE_COUNT' };
 
 interface ProjectFilterProviderProps {
   children: ReactNode;
 }
 
-const initialState: TypeProjectFilter = { category: 'all', recruitment: 'all', searchValue: '' };
+const initialState: TypeProjectFilter = {
+  category: 'all',
+  recruitment: 'all',
+  searchValue: '',
+  pageCount: 1,
+};
 const ProjectFilterStateContext = createContext<TypeProjectFilter>(initialState);
 
 type ProjectFilterDispatch = Dispatch<ProjectFilterAction>;
@@ -22,13 +28,16 @@ const projectFilterReducer = (
 ): TypeProjectFilter => {
   switch (action.type) {
     case 'CHANGE_CATEGORY':
-      return { ...projectFilter, category: action.payload, searchValue: '' };
+      return { ...projectFilter, category: action.payload, searchValue: '', pageCount: 1 };
 
     case 'CHANGE_RECRUITING_STATE':
-      return { ...projectFilter, recruitment: action.payload };
+      return { ...projectFilter, recruitment: action.payload, pageCount: 1 };
 
     case 'CHANGE_SEARCH_VALUE':
-      return { ...projectFilter, searchValue: action.payload, category: 'all' };
+      return { ...projectFilter, searchValue: action.payload, category: 'all', pageCount: 1 };
+
+    case 'INCREASE_PAGE_COUNT':
+      return { ...projectFilter, pageCount: projectFilter.pageCount + 1 };
     default:
       return projectFilter;
   }

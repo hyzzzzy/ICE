@@ -11,10 +11,19 @@ const useProjectList = () => {
     console.log('state changed');
     const fetchProjectList = async () => {
       try {
-        const { category, recruitment, searchValue } = projectFilterState;
+        const { category, recruitment, searchValue, pageCount } = projectFilterState;
         console.log(projectFilterState);
-        const res = await fetcher.getProjects(category, recruitment, searchValue || false, 1);
-        setProjectList(res.data);
+        const res = await fetcher.getProjects(
+          category,
+          recruitment,
+          searchValue || false,
+          pageCount
+        );
+        if (pageCount === 1) {
+          setProjectList(res.data.pagenatedProjects);
+        } else {
+          setProjectList((prev: any) => [...prev, ...res.data.pagenatedProjects]);
+        }
       } catch (e: any) {
         console.log(e);
       }
@@ -23,16 +32,22 @@ const useProjectList = () => {
   }, [projectFilterState]);
 
   const handleChangeCategory = (category: string) => {
+    window.scroll(0, 0);
     projectFilterDispatch({ type: 'CHANGE_CATEGORY', payload: category });
   };
 
   const handleChangeRecruitingState = (state: string) => {
+    window.scroll(0, 0);
     projectFilterDispatch({ type: 'CHANGE_RECRUITING_STATE', payload: state });
   };
 
-  const handleChangeSearchValue = (category: string) => {
-    console.log(category);
-    projectFilterDispatch({ type: 'CHANGE_SEARCH_VALUE', payload: category });
+  const handleChangeSearchValue = (searchValue: string) => {
+    window.scroll(0, 0);
+    projectFilterDispatch({ type: 'CHANGE_SEARCH_VALUE', payload: searchValue });
+  };
+
+  const handleIncreasePageCount = () => {
+    projectFilterDispatch({ type: 'INCREASE_PAGE_COUNT' });
   };
 
   return {
@@ -41,6 +56,7 @@ const useProjectList = () => {
     handleChangeCategory,
     handleChangeRecruitingState,
     handleChangeSearchValue,
+    handleIncreasePageCount,
   };
 };
 
