@@ -160,7 +160,7 @@ function ProjectListMain() {
             // value={projectListState.keywordValue}
           />
           <RecruitingProjectFilter
-            value={projectListState.recruitingFilter}
+            // value={projectListState.recruitingFilter}
             onChange={handleRecruitingSelect}
           />
         </div>
