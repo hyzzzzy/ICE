@@ -1,6 +1,7 @@
 import { useProjectFilterDispatch, useProjectFilterState } from '../contexts/ProjectFilterContext';
 import { useEffect, useState } from 'react';
 import * as fetcher from '../apis/Fetcher';
+import { debounce } from 'lodash';
 
 const useProjectList = () => {
   const projectFilterState = useProjectFilterState();
@@ -23,6 +24,7 @@ const useProjectList = () => {
           ...prev,
           moreData: false,
         }));
+
         const { category, recruitment, searchValue, pageCount } = projectFilterState;
         console.log(projectFilterState);
         const res = await fetcher.getProjects(
@@ -60,10 +62,10 @@ const useProjectList = () => {
     projectFilterDispatch({ type: 'CHANGE_RECRUITING_STATE', payload: state });
   };
 
-  const handleChangeSearchValue = (searchValue: string) => {
+  const handleChangeSearchValue = debounce((searchValue: string) => {
     window.scroll(0, 0);
     projectFilterDispatch({ type: 'CHANGE_SEARCH_VALUE', payload: searchValue });
-  };
+  }, 700);
 
   const handleIncreasePageCount = () => {
     projectFilterDispatch({ type: 'INCREASE_PAGE_COUNT' });

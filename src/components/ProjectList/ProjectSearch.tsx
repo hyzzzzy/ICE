@@ -1,14 +1,16 @@
 import { AiFillCloseCircle } from 'react-icons/ai';
 import styles from './ProjectSearch.module.scss';
 import { useMediaQuery } from 'react-responsive';
+import { useRef } from 'react';
 
 interface ProjectSearchProps {
   handleChange: (keyword: string) => void;
-  value: string;
 }
 
-function ProjectSearch({ handleChange, value }: ProjectSearchProps) {
+function ProjectSearch({ handleChange }: ProjectSearchProps) {
   const isMobile = useMediaQuery({ query: '(max-width:768px)' });
+  const searchRef = useRef<HTMLInputElement>(null);
+  const searchValue = searchRef.current?.value;
 
   return (
     <div
@@ -22,17 +24,17 @@ function ProjectSearch({ handleChange, value }: ProjectSearchProps) {
           type="text"
           placeholder="제목, 내용, 기술스택으로 검색"
           onChange={(e) => handleChange(e.target.value)}
-          value={value}
+          ref={searchRef}
         ></input>
-        {value.length > 0 && (
+        {searchValue && searchValue.length > 0 && (
           <button onClick={() => handleChange('')}>
             <AiFillCloseCircle />
           </button>
         )}
       </div>
-      {value.length > 0 && !isMobile && (
+      {searchValue && searchValue.length > 0 && !isMobile && (
         <div className={styles.resultContainer}>
-          <p>"{value}"(으)로 검색한 결과</p>
+          <p>"{searchValue}"(으)로 검색한 결과</p>
         </div>
       )}
     </div>

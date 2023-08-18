@@ -155,7 +155,10 @@ function ProjectListMain() {
           className={styles.searchContainer}
           style={(isMobile && !showSearchComponent && { display: 'none' }) || { display: '' }}
         >
-          <ProjectSearch handleChange={handleSearchChange} value={projectListState.keywordValue} />
+          <ProjectSearch
+            handleChange={handleSearchChange}
+            // value={projectListState.keywordValue}
+          />
           <RecruitingProjectFilter
             value={projectListState.recruitingFilter}
             onChange={handleRecruitingSelect}

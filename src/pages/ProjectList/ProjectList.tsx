@@ -44,10 +44,7 @@ function ProjectListPage() {
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.searchContainer}>
-            <ProjectSearch
-              handleChange={handleChangeSearchValue}
-              value={projectFilterState.searchValue}
-            />
+            <ProjectSearch handleChange={handleChangeSearchValue} />
             <RecruitingProjectFilter
               value={projectFilterState.recruitment}
               onChange={handleChangeRecruitingState}
