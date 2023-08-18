@@ -5,12 +5,24 @@ import * as fetcher from '../apis/Fetcher';
 const useProjectList = () => {
   const projectFilterState = useProjectFilterState();
   const projectFilterDispatch = useProjectFilterDispatch();
-  const [projectList, setProjectList] = useState<any>([]);
+  const [projectListData, setProjectListData] = useState<{
+    pageSize: number;
+    posts: any[];
+    moreData: boolean;
+  }>({
+    pageSize: 0,
+    posts: [],
+    moreData: false,
+  });
 
   useEffect(() => {
     console.log('state changed');
     const fetchProjectList = async () => {
       try {
+        setProjectListData((prev: any) => ({
+          ...prev,
+          moreData: false,
+        }));
         const { category, recruitment, searchValue, pageCount } = projectFilterState;
         console.log(projectFilterState);
         const res = await fetcher.getProjects(
@@ -19,10 +31,17 @@ const useProjectList = () => {
           searchValue || false,
           pageCount
         );
+        console.log(res);
+        const { pageSize, pagenatedProjects: posts } = res.data;
+        const moreData = pageSize > pageCount;
         if (pageCount === 1) {
-          setProjectList(res.data.pagenatedProjects);
+          setProjectListData({ pageSize, posts, moreData });
         } else {
-          setProjectList((prev: any) => [...prev, ...res.data.pagenatedProjects]);
+          setProjectListData((prev: any) => ({
+            ...prev,
+            posts: [...prev.posts, ...posts],
+            moreData: moreData,
+          }));
         }
       } catch (e: any) {
         console.log(e);
@@ -51,7 +70,7 @@ const useProjectList = () => {
   };
 
   return {
-    projectList,
+    projectListData,
     projectFilterState,
     handleChangeCategory,
     handleChangeRecruitingState,

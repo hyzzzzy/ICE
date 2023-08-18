@@ -13,7 +13,7 @@ function ProjectListPage() {
   const isMobile = useMediaQuery({ query: '(max-width:768px)' });
 
   const {
-    projectList,
+    projectListData,
     projectFilterState,
     handleChangeCategory,
     handleChangeSearchValue,
@@ -21,11 +21,14 @@ function ProjectListPage() {
     handleIncreasePageCount,
   } = useProjectList();
   useEffect(() => {
-    console.log(projectList);
-  }, [projectList]);
+    console.log(projectListData);
+  }, [projectListData]);
 
-  const getNextPageRef: RefObject<HTMLElement | HTMLLIElement> =
-    useInfiniteScroll(handleIncreasePageCount);
+  const getNextPageRef: RefObject<HTMLElement | HTMLLIElement> = useInfiniteScroll(() => {
+    if (projectListData.pageSize > projectFilterState.pageCount) {
+      handleIncreasePageCount();
+    }
+  });
 
   return (
     <>
@@ -51,9 +54,9 @@ function ProjectListPage() {
             />
           </div>
           <ProjectList
-            projectList={projectList}
+            projectList={projectListData.posts}
             isLoading={false}
-            moreData={true}
+            moreData={projectListData.moreData}
             innerRef={getNextPageRef}
           />
         </div>
