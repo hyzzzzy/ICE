@@ -4,9 +4,9 @@ import ProjectListPage from './ProjectList';
 function ProjectListIndex() {
   return (
     <>
-      <ProjectFilterProvider>
-        <ProjectListPage />
-      </ProjectFilterProvider>
+      {/* <ProjectFilterProvider> */}
+      <ProjectListPage />
+      {/* </ProjectFilterProvider> */}
     </>
   );
 }

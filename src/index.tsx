@@ -4,11 +4,17 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
+import { ProjectFilterProvider } from './contexts/ProjectFilterContext';
+import { ProjectListDataProvider } from './contexts/ProjectListContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <RecoilRoot>
-    <App />
+    <ProjectFilterProvider>
+      <ProjectListDataProvider>
+        <App />
+      </ProjectListDataProvider>
+    </ProjectFilterProvider>
   </RecoilRoot>
 );
 

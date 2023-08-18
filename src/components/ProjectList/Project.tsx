@@ -83,10 +83,10 @@ function Project({ projectData }: projectDataProps) {
           : `${styles.listContainer} ${styles.mobileListContainer}`
       }
       onClick={() => {
-        setProjectListState((prevState) => ({
-          ...prevState,
-          isRefetch: true,
-        }));
+        // setProjectListState((prevState) => ({
+        //   ...prevState,
+        //   isRefetch: true,
+        // }));
         navigate(`${ROUTES.PROJECT}${projectId}`);
       }}
     >

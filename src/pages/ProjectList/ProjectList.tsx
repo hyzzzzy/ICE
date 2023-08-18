@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from 'react';
+import { RefObject, useEffect } from 'react';
 import useProjectList from '../../hooks/useProjectList';
 import { useMediaQuery } from 'react-responsive';
 import styles from './ProjectListMain.module.scss';
@@ -20,14 +20,9 @@ function ProjectListPage() {
     handleChangeRecruitingState,
     handleIncreasePageCount,
   } = useProjectList();
-  useEffect(() => {
-    console.log(projectListData);
-  }, [projectListData]);
 
   const getNextPageRef: RefObject<HTMLElement | HTMLLIElement> = useInfiniteScroll(() => {
-    if (projectListData.pageSize > projectFilterState.pageCount) {
-      handleIncreasePageCount();
-    }
+    handleIncreasePageCount();
   });
 
   return (
@@ -48,9 +43,9 @@ function ProjectListPage() {
             <RecruitingProjectFilter onChange={handleChangeRecruitingState} />
           </div>
           <ProjectList
-            projectList={projectListData.posts}
-            isLoading={false}
-            moreData={projectListData.moreData}
+            projectList={projectListData.data.posts}
+            isLoading={projectListData.isLoading}
+            moreData={projectListData.data.moreData}
             innerRef={getNextPageRef}
           />
         </div>
