@@ -4,7 +4,7 @@
 
 ![image](https://github.com/hyzzzzy/ICE/assets/71072214/8d63f6e3-41ce-4e6c-a206-8e9b001e1d22)
 
-💡 http://kdt-sw-4-team07.elicecoding.com/
+💡 https://moppe.co.kr/
 
 **테스트 계정**
   - 아이디 : admin@gmail.com
@@ -343,5 +343,5 @@ KAKAO_LOGIN_API_REDIRECT_URI={KAKAO_LOGIN_API_REDIRECT}
 ## 💜 프로젝트 팀원
 |Frontend|Frontend|Frontend|Frontend|Frontend|Frontend|Backend|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| ![](https://github.com/saemileee.png)| ![](https://github.com/Chaam2.png) | ![](https://github.com/hyunsoo0098.png) | ![](https://github.com/hyzzzzy.png) | ![](https://github.com/jwinda.png) | ![](https://github.com/junhui324.png) | ![](https://github.com/okonomiyakki.png) | 
-|[이새미](https://github.com/saemileee)|[김차미](https://github.com/Chaam2)|[송현수](https://github.com/hyunsoo0098)|[신혜지](https://github.com/hyzzzzy)|[이주영](https://github.com/jwinda)|[장준희](https://github.com/junhui324)|[박지원](https://github.com/okonomiyakki)|
+| ![](https://github.com/saemileee.png)| ![](https://github.com/Chaam2.png) | ![](https://github.com/hyunsoo0098.png) | ![](https://github.com/hyzzzzy.png) | ![](https://github.com/1004ljy980.png) | ![](https://github.com/junhui324.png) | ![](https://github.com/okonomiyakki.png) | 
+|[이새미](https://github.com/saemileee)|[김차미](https://github.com/Chaam2)|[송현수](https://github.com/hyunsoo0098)|[신혜지](https://github.com/hyzzzzy)|[이주영](https://github.com/1004ljy980)|[장준희](https://github.com/junhui324)|[박지원](https://github.com/okonomiyakki)|
